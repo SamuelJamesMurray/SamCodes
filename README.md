@@ -16,4 +16,4 @@ Explain how to run the automated tests for this system
 
 ## Authors
 
-* **Samuel MurrY** - *Initial work* - [SamuelJamesMurray](https://github.com/SamuelJamesMurray)
+* **Samuel Murry** - *Initial work* - [SamuelJamesMurray](https://github.com/SamuelJamesMurray)

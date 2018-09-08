@@ -33,7 +33,7 @@ namespace Room
         /// <param name="e"></param>
         private void CalculateValues(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(Width.Text, out double W) && double.TryParse(Height.Text, out double H) && double.TryParse(length.Text, out double L)&& double.TryParse(Coats.Text, out double C))
+            if (double.TryParse(Width.Text, out double W) && double.TryParse(Height.Text, out double H) && double.TryParse(Length.Text, out double L)&& double.TryParse(Coats.Text, out double C))
             {
                 double area = W * L;
                 Area.Text = area.ToString();

@@ -18,22 +18,6 @@
 
         <Ribbon Margin="0,-20,0,0">
             <RibbonTab Header="Paint Calculator">
-                <RibbonGroup Header="Length" Margin="0,1" Width="128">
-                    <TextBox x:Name="length" Width="100" Margin="10,12,-10,-12">0</TextBox>
-                </RibbonGroup>
-                <RibbonGroup Header="Height" Margin="0,1" Width="131">
-
-                    <TextBox x:Name="Height" Width="100" Margin="10,14,-10,-14">0</TextBox>
-                </RibbonGroup>
-                <RibbonGroup Header="Layers of Paint" Margin="0,1" Width="162">
-                    <ComboBox Name="Coats" RenderTransformOrigin="2.068,0.916" Margin="10,10,1,11">
-                        <ComboBoxItem IsSelected="True" >1</ComboBoxItem>
-                        <ComboBoxItem >2</ComboBoxItem>
-                        <ComboBoxItem>3</ComboBoxItem>
-                    </ComboBox>
-                    <TextBlock Margin="52,-30,-52,30">Coats of Paint</TextBlock>
-
-                </RibbonGroup>
                 <RibbonGroup Header="Calculate" Margin="0,1" Width="141">
                     <RibbonButton Label="" LargeImageSource="button.png" Click="CalculateValues" Margin="39,0,-39,0">
 
@@ -44,11 +28,28 @@
         </Ribbon>
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <StackPanel Grid.Row="1" Orientation="Horizontal" Height="20">
-                <TextBlock Margin="65,0,95,0"><Run Text="Width:"/></TextBlock>
+                <TextBlock Margin="65,0,95,0" Width="39"><Run Text="Width:"/></TextBlock>
                 <TextBox x:Name="Width" Width="100" Margin="30,0,-30,0" Text="0"/>
-                <TextBlock x:Name="Area" Width="100" Margin="65,0"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Height="20">
+                <TextBlock Margin="65,0,95,0"><Run Text="Length:"/></TextBlock>
+                <TextBox x:Name="Length" Width="100" Margin="30,0,-30,0" Text="0"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Orientation="Horizontal" Height="20">
+                <TextBlock Margin="65,0,95,0" Width="39"><Run Text="Height:"/></TextBlock>
+                <TextBox x:Name="Height" Width="100" Margin="30,0,-30,0" Text="0"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Orientation="Horizontal" Height="44">
+                <TextBlock Margin="65,14,95,16" Width="78"><Run Text="Coats of Paint:"/></TextBlock>
+                <ComboBox x:Name="Coats" RenderTransformOrigin="2.068,0.916" Margin="10,10,1,11">
+                    <ComboBoxItem IsSelected="True" Content="1" />
+                    <ComboBoxItem Content="2" />
+                    <ComboBoxItem Content="3"/>
+                </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" Width="230">
+                <TextBlock Margin="65,0,41,0">Area of floor:</TextBlock>
+                <TextBlock x:Name="Area" Width="100" Margin="65,0"/>
                 <TextBlock Margin="65,0,41,0">Area of walls for paint:</TextBlock>
                 <TextBlock x:Name="Paint" Width="100" Margin="65,0"/>
                 <TextBlock Margin="65,0,41,0">Litres of Paint:</TextBlock>

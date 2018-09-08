@@ -1,0 +1,73 @@
+﻿<Window x:Class="Room.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Room"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto">
+
+            </RowDefinition>
+            <RowDefinition>
+
+            </RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Ribbon Margin="0,-20,0,0">
+            <RibbonTab Header="Paint Calculator">
+                <RibbonGroup Header="Width" Margin="0,1" Width="170">
+                    <TextBox x:Name="Width" Width="100" Margin="30,10,-30,-10">0</TextBox>
+                </RibbonGroup>
+                <RibbonGroup Header="Length" Margin="0,1" Width="128">
+
+                    <TextBox x:Name="length" Width="100" Margin="10,12,-10,-12">0</TextBox>
+                </RibbonGroup>
+                <RibbonGroup Header="Height" Margin="0,1" Width="131">
+
+                    <TextBox x:Name="Height" Width="100" Margin="10,14,-10,-14">0</TextBox>
+                </RibbonGroup>
+                <RibbonGroup Header="Layers of Paint" Margin="0,1" Width="162">
+                    <ComboBox Name="Coats" RenderTransformOrigin="2.068,0.916" Margin="10,10,1,11">
+                        <ComboBoxItem IsSelected="True" >1</ComboBoxItem>
+                        <ComboBoxItem >2</ComboBoxItem>
+                        <ComboBoxItem>3</ComboBoxItem>
+                    </ComboBox>
+                    <TextBlock Margin="52,-30,-52,30">Coats of Paint</TextBlock>
+
+                </RibbonGroup>
+                <RibbonGroup Header="Calculate" Margin="0,1" Width="141">
+                    <RibbonButton Label="" LargeImageSource="button.png" Click="CalculateValues" Margin="39,0,-39,0">
+
+                    </RibbonButton>
+
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+
+            <StackPanel Orientation="Vertical" Width="230">
+                <TextBlock Margin="65,0,95,0">Area of floor:</TextBlock>
+                <TextBlock x:Name="Area" Width="100" Margin="65,0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Width="230">
+                <TextBlock Margin="65,0,41,0">Area of walls for paint:</TextBlock>
+                <TextBlock x:Name="Paint" Width="100" Margin="65,0"/>
+                <TextBlock Margin="65,0,41,0">Litres of Paint:</TextBlock>
+                <TextBlock x:Name="Litres" Width="100" Margin="65,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Width="230">
+                <TextBlock Margin="65,0,41,0">Volume of room:</TextBlock>
+                <TextBlock x:Name="Volume" Width="100" Margin="65,0"/>
+            </StackPanel>
+
+
+
+        </StackPanel>
+
+    </Grid>
+</Window>

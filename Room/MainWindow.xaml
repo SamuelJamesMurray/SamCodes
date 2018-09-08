@@ -18,11 +18,7 @@
 
         <Ribbon Margin="0,-20,0,0">
             <RibbonTab Header="Paint Calculator">
-                <RibbonGroup Header="Width" Margin="0,1" Width="170">
-                    <TextBox x:Name="Width" Width="100" Margin="30,10,-30,-10">0</TextBox>
-                </RibbonGroup>
                 <RibbonGroup Header="Length" Margin="0,1" Width="128">
-
                     <TextBox x:Name="length" Width="100" Margin="10,12,-10,-12">0</TextBox>
                 </RibbonGroup>
                 <RibbonGroup Header="Height" Margin="0,1" Width="131">
@@ -46,14 +42,12 @@
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
-
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-
-            <StackPanel Orientation="Vertical" Width="230">
-                <TextBlock Margin="65,0,95,0">Area of floor:</TextBlock>
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Height="20">
+                <TextBlock Margin="65,0,95,0"><Run Text="Width:"/></TextBlock>
+                <TextBox x:Name="Width" Width="100" Margin="30,0,-30,0" Text="0"/>
                 <TextBlock x:Name="Area" Width="100" Margin="65,0"/>
             </StackPanel>
-
             <StackPanel Orientation="Vertical" Width="230">
                 <TextBlock Margin="65,0,41,0">Area of walls for paint:</TextBlock>
                 <TextBlock x:Name="Paint" Width="100" Margin="65,0"/>
@@ -68,6 +62,5 @@
 
 
         </StackPanel>
-
     </Grid>
 </Window>

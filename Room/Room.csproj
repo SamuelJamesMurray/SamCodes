@@ -103,5 +103,8 @@
   <ItemGroup>
     <Resource Include="exit.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="eraser.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

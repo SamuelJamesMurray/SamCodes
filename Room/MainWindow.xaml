@@ -8,15 +8,17 @@
         Title="MainWindow" Height="450" Width="800" Icon="paintbucket.png"> 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto">
-
-            </RowDefinition>
-            <RowDefinition>
-
-            </RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
-        <Ribbon Margin="0,-20,0,0">
+        <Canvas x:Name="myCanvas" Grid.Row="1" Grid.Column="1" Background="AliceBlue" SizeChanged="myCanvas_SizeChanged" MouseUp="myCanvas_MouseUp"></Canvas>
+        <Ribbon Margin="0,-20,0,0" Grid.ColumnSpan="2">
             <Ribbon.ApplicationMenu>
                 <RibbonApplicationMenu KeyTip="F">
                     <RibbonApplicationMenuItem Header="Exit" ImageSource="exit.png" Click="ExitApp"/>
@@ -27,7 +29,9 @@
                     <RibbonButton Label="Calculate" LargeImageSource="button.png" Click="CalculateValues">
 
                     </RibbonButton>
+                    <RibbonButton Label="Clear" LargeImageSource="eraser.png" Click="Clear">
 
+                    </RibbonButton>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>

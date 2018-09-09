@@ -8,7 +8,11 @@ Download the Room folder and open room.sln in visual studio 2017
 
 ### Prerequisites
 
-You will need Visual Studio with C# Installed 
+.net framework 4.6.1 installed
+
+### Deployment
+
+Copy the Release folder from the Bin folder
 
 ## Authors
 

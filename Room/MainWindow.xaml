@@ -17,47 +17,63 @@
         </Grid.RowDefinitions>
 
         <Ribbon Margin="0,-20,0,0">
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu KeyTip="F">
+                    <RibbonApplicationMenuItem Header="Exit" ImageSource="exit.png" Click="ExitApp"/>
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
             <RibbonTab Header="Paint Calculator">
-                <RibbonGroup Header="Calculate" Margin="0,1" Width="141">
-                    <RibbonButton Label="" LargeImageSource="button.png" Click="CalculateValues" Margin="39,0,-39,0">
+                <RibbonGroup Header="Calculate">
+                    <RibbonButton Label="Calculate" LargeImageSource="button.png" Click="CalculateValues">
 
                     </RibbonButton>
 
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
-        <StackPanel Grid.Row="1" Orientation="Vertical">
-            <StackPanel Grid.Row="1" Orientation="Horizontal" Height="20">
-                <TextBlock Margin="65,0,95,0" Width="39"><Run Text="Width:"/></TextBlock>
-                <TextBox x:Name="Width" Width="100" Margin="30,0,-30,0" Text="0"/>
+        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="20,0,0,0">
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Height="20" Margin="5">
+                <TextBlock  Width="115"><Run Text="Width (m):"/></TextBlock>
+                <TextBox x:Name="Width" Width="60"  Text="0"/>
             </StackPanel>
-            <StackPanel Grid.Row="2" Orientation="Horizontal" Height="20">
-                <TextBlock Margin="65,0,95,0"><Run Text="Length:"/></TextBlock>
-                <TextBox x:Name="Length" Width="100" Margin="30,0,-30,0" Text="0"/>
+            <StackPanel Orientation="Horizontal" Height="20" Margin="5">
+                <TextBlock Width="115" Text="Length (m):"></TextBlock>
+                <TextBox x:Name="Length" Width="60"  Text="0"/>
             </StackPanel>
-            <StackPanel Grid.Row="3" Orientation="Horizontal" Height="20">
-                <TextBlock Margin="65,0,95,0" Width="39"><Run Text="Height:"/></TextBlock>
-                <TextBox x:Name="Height" Width="100" Margin="30,0,-30,0" Text="0"/>
+            <StackPanel  Orientation="Horizontal" Height="20" Margin="5">
+                <TextBlock Width="115"><Run Text="Height (m):"/></TextBlock>
+                <TextBox x:Name="Height" Width="60"  Text="0"/>
             </StackPanel>
-            <StackPanel Grid.Row="4" Orientation="Horizontal" Height="44">
-                <TextBlock Margin="65,14,95,16" Width="78"><Run Text="Coats of Paint:"/></TextBlock>
-                <ComboBox x:Name="Coats" RenderTransformOrigin="2.068,0.916" Margin="10,10,1,11">
+            <StackPanel  Orientation="Horizontal" Margin="5">
+                <TextBlock  Width="115"><Run Text="Coats of Paint:"/></TextBlock>
+                <ComboBox x:Name="Coats" Height="25" Width="60">
                     <ComboBoxItem IsSelected="True" Content="1" />
                     <ComboBoxItem Content="2" />
                     <ComboBoxItem Content="3"/>
                 </ComboBox>
             </StackPanel>
-            <StackPanel Orientation="Vertical" Width="230">
-                <TextBlock Margin="65,0,41,0">Area of floor:</TextBlock>
-                <TextBlock x:Name="Area" Width="100" Margin="65,0"/>
-                <TextBlock Margin="65,0,41,0">Area of walls for paint:</TextBlock>
-                <TextBlock x:Name="Paint" Width="100" Margin="65,0"/>
-                <TextBlock Margin="65,0,41,0">Litres of Paint:</TextBlock>
-                <TextBlock x:Name="Litres" Width="100" Margin="65,0"/>
+            <StackPanel  Orientation="Horizontal" Margin="5">
+                <TextBlock Width="115">Area of floor (m²):</TextBlock>
+                <TextBlock x:Name="Area" Width="115" />
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal" Margin="5,10,0,0">
+                <TextBlock Width="115">Area of walls (m²):</TextBlock>
+                <TextBlock x:Name="Paint" Width="115" />
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal" Margin="5,15,0,0">
+                <TextBlock Width="115">Litres of Paint:</TextBlock>
+                <TextBlock x:Name="Litres" Width="115"/>
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal" Margin="5,15,0,0">
+                <TextBlock Width="115">Volume of room (m³):</TextBlock>
+                <TextBlock x:Name="Volume" Width="115" />
             </StackPanel>
             <StackPanel Orientation="Vertical" Width="230">
-                <TextBlock Margin="65,0,41,0">Volume of room:</TextBlock>
-                <TextBlock x:Name="Volume" Width="100" Margin="65,0"/>
+               
+                
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Width="230">
+                
             </StackPanel>
 
 

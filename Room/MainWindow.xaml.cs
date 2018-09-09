@@ -51,5 +51,10 @@ namespace Room
                 MessageBox.Show("Enter a number", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void ExitApp(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

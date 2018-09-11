@@ -37,7 +37,7 @@
                     </RibbonButton>
                 </RibbonGroup>
                 <RibbonGroup Header="Help">
-                    <TextBlock Width="350" TextWrapping="Wrap">For irregular rooms set up the height and the number of coats of paint on the left and then draw the irregular room on the grid. Each square is a meter by a meter. For a rectangular room you have to also set the Width and Length and press calculate</TextBlock>
+                    <TextBlock Width="350" TextWrapping="Wrap">For irregular rooms, set up the height and the number of coats of paint on the left, and then draw the irregular room on the grid. Each square is a meter by a meter. For a rectangular room, set the Width, Length, Height and number of coats, and press calculate.</TextBlock>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>

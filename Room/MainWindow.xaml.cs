@@ -108,7 +108,7 @@ namespace Room
         private void DrawGrid()
         {
             // from left to right
-            for (int x = 100; x < myCanvas.ActualWidth; x += gridSpacing)
+            for (int x = 0; x < myCanvas.ActualWidth; x += gridSpacing)
             {
                 Line line = new Line();
                 line.Stroke = Brushes.LightGray;
@@ -121,7 +121,7 @@ namespace Room
             }
 
             // from bottom to top
-            for (int x = 100; x < myCanvas.ActualWidth; x += gridSpacing)
+            for (int x = 0; x < myCanvas.ActualHeight; x += gridSpacing)
             {
                 Line line = new Line();
                 line.Stroke = Brushes.LightGray;
@@ -181,6 +181,15 @@ namespace Room
         {
             points.Clear();
             DrawEverything();
+        }
+
+        private void Undo(object sender, RoutedEventArgs e)
+        {
+            if (points.Count > 0)
+            {
+                points.RemoveAt(points.Count - 1);
+                DrawEverything();
+            }
         }
     }
 }

@@ -29,6 +29,9 @@
                     <RibbonButton Label="Calculate" LargeImageSource="button.png" Click="CalculateValues">
 
                     </RibbonButton>
+                    <RibbonButton Label="Undo" LargeImageSource="undo.png" Click="Undo">
+
+                    </RibbonButton>
                     <RibbonButton Label="Clear" LargeImageSource="eraser.png" Click="Clear">
 
                     </RibbonButton>

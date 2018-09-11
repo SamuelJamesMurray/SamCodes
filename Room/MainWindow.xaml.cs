@@ -29,11 +29,19 @@ namespace Room
             this.Loaded += MainWindow_Loaded;
         }
 
+        /// <summary>
+        /// Loads the Draweverything function when everything else is loaded
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             DrawEverything();
         }
 
+        /// <summary>
+        /// Clears the grid and redraws it
+        /// </summary>
         public void DrawEverything()
         {
             myCanvas.Children.Clear();
@@ -42,6 +50,9 @@ namespace Room
 
         }
 
+        /// <summary>
+        /// Draws lines amd calculates values for polygon
+        /// </summary>
         private void DrawLines()
         {
             Polyline polyline = new Polyline();
@@ -72,7 +83,12 @@ namespace Room
                 Litres.Text = (distance / 10.0 * C).ToString("0.##");
             }
         }
-
+        /// <summary>
+        /// Work out distance between two points
+        /// </summary>
+        /// <param name="point1"></param>
+        /// <param name="point2"></param>
+        /// <returns></returns>
         private static double GetDistance(Point point1, Point point2)
         {
             //pythagorean theorem c^2 = a^2 + b^2
@@ -160,16 +176,31 @@ namespace Room
             }
         }
 
+        /// <summary>
+        /// Closes the Application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitApp(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
+        /// <summary>
+        /// Loads Draweverything when screen size is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void myCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             DrawEverything();
         }
 
+        /// <summary>
+        /// Adds point where you click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void myCanvas_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Point p = Mouse.GetPosition(myCanvas);
@@ -177,12 +208,22 @@ namespace Room
             DrawEverything();
         }
 
+        /// <summary>
+        /// Deletes all points and relodes DrawEverything
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Clear(object sender, RoutedEventArgs e)
         {
             points.Clear();
             DrawEverything();
         }
 
+        /// <summary>
+        /// Deletes last point
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Undo(object sender, RoutedEventArgs e)
         {
             if (points.Count > 0)

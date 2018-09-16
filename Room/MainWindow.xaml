@@ -25,8 +25,16 @@
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
             <RibbonTab Header="Paint Calculator">
+
+                <RibbonGroup Header="File">
+                    <RibbonButton Label="Save" LargeImageSource="Save.png" Click="Save"/>
+                    <RibbonButton Label="Load" LargeImageSource="Load.png" Click="Load"/>
+                </RibbonGroup>
                 <RibbonGroup Header="Calculate">
                     <RibbonButton Label="Calculate" LargeImageSource="button.png" Click="CalculateValues">
+
+                    </RibbonButton>
+                    <RibbonButton Label="Calculate Grid" LargeImageSource="button.png" Click="CalculateGrid">
 
                     </RibbonButton>
                     <RibbonButton Label="Undo" LargeImageSource="undo.png" Click="Undo">
@@ -35,10 +43,12 @@
                     <RibbonButton Label="Clear" LargeImageSource="eraser.png" Click="Clear">
 
                     </RibbonButton>
+                    
                 </RibbonGroup>
                 <RibbonGroup Header="Help">
                     <TextBlock Width="350" TextWrapping="Wrap">For irregular rooms, set up the height and the number of coats of paint on the left, and then draw the irregular room on the grid. Each square is a meter by a meter. For a rectangular room, set the Width, Length, Height and number of coats, and press calculate.</TextBlock>
                 </RibbonGroup>
+                
             </RibbonTab>
         </Ribbon>
         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="20,0,0,0">

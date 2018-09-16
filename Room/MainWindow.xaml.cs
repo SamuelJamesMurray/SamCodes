@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Newtonsoft.Json;
 
 namespace Room
 {
@@ -55,33 +58,36 @@ namespace Room
         /// </summary>
         private void DrawLines()
         {
+            double StartCircleDiameter = 10.0;
+
+
+            if (points.Count() > 0)
+            {
+                // make a circle to draw
+                Ellipse el = new Ellipse();
+                el.Width = StartCircleDiameter;
+                el.Height = StartCircleDiameter;
+
+                // set the colour
+                el.Fill = Brushes.Green;
+                el.Stroke = Brushes.Blue;
+                el.StrokeThickness = 1;
+
+                // work out where to put it, only was is using the margin to place it
+                double left = points[0].X - (StartCircleDiameter / 2);
+                double top = points[0].Y - (StartCircleDiameter / 2);
+                el.Margin = new Thickness(left, top, 0, 0);
+
+                // draw it
+                myCanvas.Children.Add(el);
+            }
             Polyline polyline = new Polyline();
             polyline.Stroke = Brushes.Black;
             polyline.StrokeThickness = 2;
             polyline.Points = points;
             myCanvas.Children.Add(polyline);
 
-            PointCollection temp = new PointCollection();
-            foreach (Point p in points)
-            {
-                temp.Add (p);
-            }
-            double area = AreaOfPolygon(temp)/10000;
-            Area.Text = area.ToString("0.##");
-            if (double.TryParse(Height.Text, out double H) && double.TryParse(Coats.Text, out double C))
-            {
-                double distance = 0;
-                if (temp.Count > 1)
-                {
-                    for (int i = 0; i < temp.Count - 1; i++)
-                    {
-                        distance += GetDistance(temp[i], temp[i + 1]) / 100.0*H;
-                    }
-                }
-                Paint.Text = distance.ToString("0.##");
-                Volume.Text = (area * H).ToString("0.##");
-                Litres.Text = (distance / 10.0 * C).ToString("0.##");
-            }
+            CalculateGridValues();
         }
         /// <summary>
         /// Work out distance between two points
@@ -231,6 +237,75 @@ namespace Room
                 points.RemoveAt(points.Count - 1);
                 DrawEverything();
             }
+        }
+
+        private void Save(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "room file|*.room";
+            saveFileDialog1.FileName = "firstroom.room";
+            saveFileDialog1.Title = "Save a room";
+            saveFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.  
+            if (saveFileDialog1.FileName != "")
+            {
+                using (StreamWriter sw = new StreamWriter(saveFileDialog1.FileName))
+                using (JsonWriter writer = new JsonTextWriter(sw))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    serializer.Serialize(writer, points);
+                }
+            
+            }
+        }
+
+        private void Load(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "room file|*.room";
+            openFileDialog1.FileName = "firstroom.room";
+            openFileDialog1.Title = "Open a room";
+            openFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.  
+            if (openFileDialog1.FileName != "")
+            {
+                string json = File.ReadAllText(openFileDialog1.FileName);
+                points = JsonConvert.DeserializeObject<PointCollection>(json);
+                DrawEverything();
+
+            }
+        }
+
+        private void CalculateGridValues()
+        {
+            PointCollection temp = new PointCollection();
+            foreach (Point p in points)
+            {
+                temp.Add(p);
+            }
+            double area = AreaOfPolygon(temp) / 10000;
+            Area.Text = area.ToString("0.##");
+            if (double.TryParse(Height.Text, out double H) && double.TryParse(Coats.Text, out double C))
+            {
+                double distance = 0;
+                if (temp.Count > 1)
+                {
+                    for (int i = 0; i < temp.Count - 1; i++)
+                    {
+                        distance += GetDistance(temp[i], temp[i + 1]) / 100.0 * H;
+                    }
+                }
+                Paint.Text = distance.ToString("0.##");
+                Volume.Text = (area * H).ToString("0.##");
+                Litres.Text = (distance / 10.0 * C).ToString("0.##");
+            }
+        }
+
+        private void CalculateGrid(object sender, RoutedEventArgs e)
+        {
+            CalculateGridValues();
         }
     }
 }

@@ -163,17 +163,25 @@ namespace Room
         /// <param name="e"></param>
         private void CalculateValues(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(Width.Text, out double W) && double.TryParse(Height.Text, out double H) && double.TryParse(Length.Text, out double L)&& double.TryParse(Coats.Text, out double C))
+            if (double.TryParse(Width.Text, out double W) && double.TryParse(Height.Text, out double H) && double.TryParse(Length.Text, out double L)&& double.TryParse(Coats.Text, out double C) && double.TryParse(AntiArea.Text, out double A))
             {
                 double area = W * L;
-                Area.Text = area.ToString("0.##");
                 double volume = area * H;
-                Volume.Text = volume.ToString("0.##");
                 double paint = 2 * H * L + 2 * H * W;
-                Paint.Text = paint.ToString("0.##");
                 //I got a value of 1 litre of paint per 10m^2 from the B&Q website
-                double litres =  paint / 10.0 *  C;
-                Litres.Text = litres.ToString("0.##");
+                double litres = (paint - A) / 10.0 * C;
+                if (litres < 0.0)
+                {
+                    MessageBox.Show("You have more doors and windows than wall to put them in", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    
+                    Area.Text = area.ToString("0.##");
+                    Volume.Text = volume.ToString("0.##");
+                    Paint.Text = paint.ToString("0.##");
+                    Litres.Text = litres.ToString("0.##");
+                }
             }
             //An error message if people don't enter a number in each box
             else
@@ -286,8 +294,8 @@ namespace Room
                 temp.Add(p);
             }
             double area = AreaOfPolygon(temp) / 10000;
-            Area.Text = area.ToString("0.##");
-            if (double.TryParse(Height.Text, out double H) && double.TryParse(Coats.Text, out double C))
+            
+            if (double.TryParse(Height.Text, out double H) && double.TryParse(Coats.Text, out double C) && double.TryParse(AntiArea.Text, out double A))
             {
                 double distance = 0;
                 if (temp.Count > 1)
@@ -297,9 +305,19 @@ namespace Room
                         distance += GetDistance(temp[i], temp[i + 1]) / 100.0 * H;
                     }
                 }
-                Paint.Text = distance.ToString("0.##");
-                Volume.Text = (area * H).ToString("0.##");
-                Litres.Text = (distance / 10.0 * C).ToString("0.##");
+                double paint = distance * H;
+                double litres = (paint - A) / 10.0 * C;
+                if (litres < 0.0)
+                {
+                    MessageBox.Show("You have more doors and windows than wall to put them in", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    Area.Text = area.ToString("0.##");
+                    Volume.Text = (area * H).ToString("0.##");
+                    Paint.Text = paint.ToString("0.##");
+                    Litres.Text = litres.ToString("0.##");
+                }
             }
         }
 

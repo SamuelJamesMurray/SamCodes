@@ -78,19 +78,19 @@
             </StackPanel>
             <StackPanel  Orientation="Horizontal" Margin="5">
                 <TextBlock Width="201">Area of floor (m²):</TextBlock>
-                <TextBlock x:Name="Area" Width="115" />
+                <TextBlock x:Name="Area" Width="67" />
             </StackPanel>
             <StackPanel  Orientation="Horizontal" Margin="5,10,0,0">
                 <TextBlock Width="201">Area of walls (m²):</TextBlock>
-                <TextBlock x:Name="Paint" Width="115" />
+                <TextBlock x:Name="Paint" Width="67" />
             </StackPanel>
             <StackPanel  Orientation="Horizontal" Margin="5,15,0,0">
                 <TextBlock Width="201">Litres of Paint:</TextBlock>
-                <TextBlock x:Name="Litres" Width="115"/>
+                <TextBlock x:Name="Litres" Width="67"/>
             </StackPanel>
             <StackPanel  Orientation="Horizontal" Margin="5,15,0,0">
                 <TextBlock Width="201">Volume of room (m³):</TextBlock>
-                <TextBlock x:Name="Volume" Width="115" />
+                <TextBlock x:Name="Volume" Width="67" />
             </StackPanel>
             <StackPanel Orientation="Vertical" Width="230">
                
